@@ -46,6 +46,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../MyProject/guli-mall" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -165,7 +166,7 @@
       <workItem from="1601085204874" duration="318000" />
       <workItem from="1601099754178" duration="19000" />
       <workItem from="1601108021304" duration="6000" />
-      <workItem from="1601135249022" duration="3155000" />
+      <workItem from="1601135249022" duration="3645000" />
     </task>
     <servers />
   </component>
