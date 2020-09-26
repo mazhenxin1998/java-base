@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/java-base.iml" filepath="$PROJECT_DIR$/java-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-io/java-io.iml" filepath="$PROJECT_DIR$/java-io/java-io.iml" />
+      <module fileurl="file://$PROJECT_DIR$/threads/threads.iml" filepath="$PROJECT_DIR$/threads/threads.iml" />
+    </modules>
+  </component>
+</project>
