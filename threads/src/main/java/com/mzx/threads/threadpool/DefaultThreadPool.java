@@ -1,5 +1,6 @@
 package com.mzx.threads.threadpool;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -35,6 +36,8 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
 
     private int workerNum = DEFAULT_WORKER_NUMBERS;
 
+    private List<Thread> threadTest = new ArrayList<>();
+
     /**
      * 线程编号生成.
      */
@@ -60,7 +63,9 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
 
             Worker worker = new Worker();
             workers.add(worker);
-            new Thread(worker, "ThreadPool-Worker-" + threadNum.incrementAndGet()).start();
+            Thread thread = new Thread(worker, "ThreadPool-Worker-" + threadNum.incrementAndGet());
+            thread.start();
+            threadTest.add(thread);
 
         }
 
@@ -77,7 +82,7 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
                 // 添加一个工作,然后通知一个工作者线程进行工作.
                 // 这里没有通知所有工作者线程是为了避免线程竞争造成的额外的线程损耗.
                 // 后面工作者线程在监听到工做队列中没有任务的时候将会进行等待,和这里的通知正好匹配.
-                jobs.notify();
+                jobs.notifyAll();
 
             }
 
@@ -132,6 +137,7 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
                 // 先从队列中移除,然后在停止.
                 if (workers.remove(worker)) {
 
+                    // 每次停止一个工作者线程的时候,正在执行的Job会执行完毕之后在停止的.
                     worker.shutdown();
                     count++;
 
@@ -152,7 +158,16 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
 
     }
 
-    // TODO: 2020/9/27 明天早上完成工作者线程完成任务的功能.
+    @Override
+    public void showWorkingThread() {
+
+        threadTest.forEach(item -> {
+
+            System.out.println("工作者线程: " + item.getName());
+
+        });
+
+    }
 
     class Worker implements Runnable {
 
@@ -169,6 +184,54 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
 
         @Override
         public void run() {
+
+            // 开启了一个工作者线程之后, 该工作者线程就循环等待并且监听任务队列.
+            // 如果队列中有Job在等待线程执行, 那么当前工作者线程就会从队列中取出一个Job进行任务执行.
+            // 如果任务线程中现在没有任务,那么其将会在随后的第一次循环中进行对象锁的wait()让该线程进入等待模式,并且让出对象锁.
+            while (running) {
+
+                Job job = null;
+                // 这里对jobs加锁是为了同步从jobs中取出一个Job进行执行.
+                synchronized (jobs) {
+
+                    while (jobs.isEmpty()) {
+
+                        // 如果线程池中的任务数量是空, 那么就等待监听线程池,如果其中有了新的任务,那么会激活一个工作者线程进行执行任务.
+                        try {
+
+                            // 利用对象同步锁暂停当前线程.
+                            // wait操作会释放锁.
+                            jobs.wait();
+
+                        } catch (InterruptedException e) {
+
+                            // TODO: 2020/9/27 interrupt到底用来做什么的?
+                            Thread.currentThread().interrupt();
+                            return;
+
+                        }
+
+                    }
+
+                    // 同步从jobs中获取Job
+                    job = jobs.removeFirst();
+                    // 获取到要执行的Job之后推出同步代码块.
+
+                }
+
+                if (job != null) {
+
+                    try {
+
+                        // 同步调用run方法 其实就是相当于开启一个线程进行异步调用了.
+                        // 这样做的好处是省去了线程创建的开销, 和线程由用户态和内核态切换的开销.
+                        job.run();
+
+                    } catch (Exception e) {}
+
+                }
+
+            }
 
         }
 

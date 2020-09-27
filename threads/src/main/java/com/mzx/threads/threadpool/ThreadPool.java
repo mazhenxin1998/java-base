@@ -40,4 +40,9 @@ public interface ThreadPool<Job extends Runnable> {
      */
     int getJobSize();
 
+    /**
+     * 查看当前正在工作的线程.
+     */
+    void showWorkingThread();
+
 }
