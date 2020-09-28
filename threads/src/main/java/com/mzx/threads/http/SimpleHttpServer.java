@@ -1,5 +1,7 @@
 package com.mzx.threads.http;
 
+import com.mzx.threads.http.annotation.RequestMapping;
+import com.mzx.threads.http.annotation.RestController;
 import com.mzx.threads.threadpool.DefaultThreadPool;
 import com.mzx.threads.threadpool.ThreadPool;
 
@@ -7,11 +9,7 @@ import java.io.*;
 import java.lang.reflect.Method;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -48,7 +46,9 @@ public class SimpleHttpServer {
      * key是@RequestMappint中value的值,如果类上没有添加注解,那么就使用方法上的注解@RequestMappint中的value的值作为key.
      * 如果类上和方法上同时含有注解,那么就是用两者拼接起来的作为一个完整的key.
      */
-    private final ConcurrentHashMap<String, Method> handlerMapping = new ConcurrentHashMap<>();
+    static final ConcurrentHashMap<String, Method> handlerMapping = new ConcurrentHashMap<>();
+
+    private String packagePath = "/com/mzx/threads/http/controller/";
 
     public static void stPort(int port) {
 
@@ -145,20 +145,43 @@ public class SimpleHttpServer {
                 out.println("Server: Molly");
                 out.println("Content-Type: text/html; charset=UTF-8");
                 out.println("");
-                if ("/test".equals(path)) {
 
-                    String test = this.test();
-                    out.println(test);
-                    // 每次写完之后都需要进行flush.
+                // 1. 需要先判断当前请求的方法是否存在.
+                if (handlerMapping.containsKey(path)) {
+
+                    Method method = handlerMapping.get(path);
+                    // 现在只处理方法中不带参数的.
+                    Class<?>[] parameterTypes = method.getParameterTypes();
+                    Object[] args = new Object[parameterTypes.length];
+                    int i = 0;
+                    for (Class<?> param : parameterTypes) {
+
+                        String name = param.getName();
+                        args[i] = name;
+                        i++;
+
+                    }
+
+                    Object invoke = method.invoke(args);
+                    out.println(invoke.toString());
+                    out.flush();
+
+                } else {
+
+                    HashMap<String, Object> map = new HashMap<>();
+                    map.put("code", 500);
+                    out.println(map);
                     out.flush();
 
                 }
 
             } catch (Exception e) {
 
+                // 出现异常了.
                 out.println("HTTP/1.1 500");
                 out.println("");
                 out.flush();
+                e.printStackTrace();
 
             } finally {
 
@@ -206,20 +229,167 @@ public class SimpleHttpServer {
     public void init() {
 
         this.scanAnnotation();
+        this.doInstance();
+        this.urlMapping();
+
 
     }
 
     /**
-     *
+     * 扫描所有添加了Controller注解.
      */
     private void scanAnnotation() {
 
         // 应该拿到的是类路径.
         // com.mzx.threads.http.controller
         // D:\Study\Java\IDEACode\java-base\threads\target\classes\com\mzx\threads\http
-        // TODO: 2020/9/28 尽量最早完成.
-        String path = this.getClass().getClassLoader().getResource("/com/mzx").getPath();
-        System.out.println(path);
+        String path = this.getClass().getClassLoader().getResource("").getPath();
+        String s = path.substring(1, path.length() - 1);
+        String annotationPath = s + packagePath;
+        this.scan(annotationPath);
+
+    }
+
+    /**
+     * 扫描指定包下的全类名.
+     *
+     * @param path
+     */
+    private void scan(String path) {
+
+        // 应该是一个目录.
+        File file = new File(path);
+        String[] list = file.list();
+        Arrays.stream(list).forEach(item -> {
+
+            String filePath = path + item;
+            File f = new File(filePath);
+            if (f.isDirectory()) {
+
+                // 如果是目录. 就递归.
+                this.scan(filePath);
+
+            } else {
+
+                // 代码能执行到这里的都是一个.class文件.
+                // D:/Study/Java/IDEACode/java-base/threads/target/classes/com/mzx/threads/http/controller/MainController.class
+                System.out.println(filePath);
+                String[] split = filePath.split("/");
+                String classPath = "";
+                // TODO: 2020/9/28 固定.
+                for (int i = 8; i < split.length; i++) {
+
+                    classPath += split.length - 1 == i ? split[i] : split[i] + ".";
+
+                }
+
+                className.add(classPath.replaceAll(".class", ""));
+
+            }
+
+        });
+
+    }
+
+    /**
+     * 根据className集合通过反射将其对应的对象放入到伪IOC容器中.
+     */
+    private void doInstance() {
+
+        if (this.className != null && this.className.size() > 0) {
+
+            this.className.forEach(item -> {
+
+                try {
+
+                    Class<?> cla;
+                    // 通过反射为每一个添加了@RestControoler注解的类生成一个对象放入到IOC容器中.
+                    // 这个cla通过反射创建之后是一个cla.
+                    cla = Class.forName(item);
+                    // 判断当前类上含有什么注解.
+                    // 1. @RestController 2. @RequestMapping
+                    // 如果当前类上添加了@RestController那么就放入Map容器中.
+                    if (cla.isAnnotationPresent(RestController.class)) {
+
+                        try {
+
+                            Object o = cla.newInstance();
+                            // @RestController只是一个标识符.
+                            // key是类上添加了@RequestMapping中的value的值.
+                            // RequestMapping是null.
+                            RequestMapping requestMapping = cla.getAnnotation(RequestMapping.class);
+                            if (requestMapping != null) {
+
+                                // @RequestMapping 和 @RestController应该是配对的.
+                                String key = requestMapping.value();
+                                IOC.put(key, o);
+
+                            }
+
+                        } catch (InstantiationException e) {
+
+                            e.printStackTrace();
+
+                        } catch (IllegalAccessException e) {
+
+                            e.printStackTrace();
+
+                        }
+
+                    }
+
+                } catch (ClassNotFoundException e) {
+
+                    System.out.println("加载Bean失败: " + e.getMessage());
+
+                }
+
+            });
+
+        }
+
+    }
+
+    /**
+     * 做路径映射匹配.
+     */
+    private void urlMapping() {
+
+        if (this.IOC != null && this.IOC.size() > 0) {
+
+            // 现在需要往 handlerMapping 增加key---method方法进行映射.
+            this.IOC.forEach((key, value) -> {
+
+                // value是一个Object对象: 每一个Object对象都是一个Controller.
+                Class<?> cla = value.getClass();
+                // 这个分支没有进去.
+                if (cla.isAnnotationPresent(RestController.class)) {
+
+                    RequestMapping requestMapping = cla.getAnnotation(RequestMapping.class);
+                    String mapping = requestMapping.value();
+                    // 获取当前类下所有的方法.
+                    Method[] methods = cla.getMethods();
+                    Arrays.stream(methods).forEach(method -> {
+
+                        // 现在需要对每一个方法进行处理.
+                        RequestMapping annotation = method.getAnnotation(RequestMapping.class);
+                        if (annotation != null) {
+
+                            String v = annotation.value();
+                            // 所以说每一个方法最后对应的key都应该是类上的Mapping和方法上的Mapping的总称.
+                            String methodKey = key + v;
+                            // 这里应该是
+                            handlerMapping.put(methodKey, method);
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+        }
 
     }
 
