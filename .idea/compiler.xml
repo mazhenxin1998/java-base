@@ -7,18 +7,22 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="threads" />
+        <module name="java-basemodel" />
         <module name="java-io" />
+        <module name="java-designmodel" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="java-base" target="8" />
+      <module name="java-base" target="1.8" />
+      <module name="java-basemodel" target="1.8" />
+      <module name="java-designmodel" target="1.8" />
       <module name="java-io" target="1.8" />
-      <module name="threads" target="8" />
+      <module name="threads" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="java-base" options="-parameters" />
+      <module name="java-base" options="" />
     </option>
   </component>
 </project>

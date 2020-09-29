@@ -34,13 +34,13 @@ public class SimpleHttpServer {
     /**
      * 存放了所有标记有@RestController注解的全路径.
      */
-    private List<String> className = new ArrayList<>();
+    static List<String> className = new ArrayList<>();
 
     /**
      * 存放了所有标记@RestControoler注解的实例.
      * 该容器时由上面的类路劲容器实现并且加载.
      */
-    private Map<String, Object> IOC = new HashMap<>();
+    static Map<String, Object> IOC = new HashMap<>();
 
     /**
      * key是@RequestMappint中value的值,如果类上没有添加注解,那么就使用方法上的注解@RequestMappint中的value的值作为key.
@@ -146,25 +146,49 @@ public class SimpleHttpServer {
                 out.println("Content-Type: text/html; charset=UTF-8");
                 out.println("");
 
-                // 1. 需要先判断当前请求的方法是否存在.
-                if (handlerMapping.containsKey(path)) {
+                // 1. 需要先判断当前请求的方法是否存在. /test/main/t?
+                String ps = path;
+                // TODO: 2020/9/29 默认第一个就是controller.
+                String[] cs = ps.split("/");
+                String[] split = path.split("\\?");
 
-                    Method method = handlerMapping.get(path);
-                    // 现在只处理方法中不带参数的.
-                    Class<?>[] parameterTypes = method.getParameterTypes();
-                    Object[] args = new Object[parameterTypes.length];
-                    int i = 0;
-                    for (Class<?> param : parameterTypes) {
+                if (handlerMapping.containsKey(split[0])) {
 
-                        String name = param.getName();
-                        args[i] = name;
-                        i++;
+                    // /t?name=马振鑫&age=18
+                    Method method = handlerMapping.get(split[0]);
+                    RequestMapping mapping = method.getAnnotation(RequestMapping.class);
+                    String paramTrue = mapping.param();
+                    if (paramTrue == null || paramTrue.equals("")) {
+
+                        // 如果是空字符串.
+
+                    } else {
+
+                        // 现在只处理方法中不带参数的.
+                        Class<?>[] parameterTypes = method.getParameterTypes();
+                        Object[] args = new Object[parameterTypes.length];
+                        int i = 0;
+                        String[] names = split[1].split("&");
+                        for (Class<?> param : parameterTypes) {
+
+                            String[] ns = names[i].split("=");
+                            if (ns[0].equals(paramTrue)) {
+
+                                args[i] = ns[1];
+
+                            }
+
+                            i++;
+
+                        }
+
+                        Object o = IOC.get("/" + cs[1]);
+                        // 第一个应该是类对象调用的方法.
+                        Object invoke = method.invoke(o, args);
+                        out.println(invoke.toString());
+                        out.flush();
 
                     }
-
-                    Object invoke = method.invoke(args);
-                    out.println(invoke.toString());
-                    out.flush();
 
                 } else {
 

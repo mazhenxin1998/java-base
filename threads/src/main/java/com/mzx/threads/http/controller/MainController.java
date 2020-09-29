@@ -12,10 +12,17 @@ import com.mzx.threads.http.annotation.RestController;
 @RequestMapping(value = "/main")
 public class MainController {
 
-    @RequestMapping(value = "/t")
-    public String main() {
+    @RequestMapping(value = "/t" ,param = "name")
+    public String main(String name) {
 
-        return "你好,Java";
+        return name;
+
+    }
+
+    @RequestMapping(value = "/java", param = "n")
+    public String java(String n){
+
+        return n;
 
     }
 

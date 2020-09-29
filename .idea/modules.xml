@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/java-base.iml" filepath="$PROJECT_DIR$/java-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-basemodel/java-basemodel.iml" filepath="$PROJECT_DIR$/java-basemodel/java-basemodel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-designmodel/java-designmodel.iml" filepath="$PROJECT_DIR$/java-designmodel/java-designmodel.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-io/java-io.iml" filepath="$PROJECT_DIR$/java-io/java-io.iml" />
       <module fileurl="file://$PROJECT_DIR$/threads/threads.iml" filepath="$PROJECT_DIR$/threads/threads.iml" />
     </modules>
