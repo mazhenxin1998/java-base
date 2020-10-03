@@ -12,6 +12,7 @@
         <module>java-io</module>
         <module>java-designmodel</module>
         <module>java-basemodel</module>
+        <module>java-sound-code</module>
     </modules>
     <name>java-base</name>
     <description>Demo project for Spring Boot</description>
