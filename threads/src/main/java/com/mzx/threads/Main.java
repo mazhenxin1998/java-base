@@ -18,6 +18,7 @@ public class Main {
         lock.lock();
         try {
 
+            // 尝试终止一个线程。
 
         } catch (Exception e) {
 

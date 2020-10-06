@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3e0af8f5-52b8-4666-b58a-e29eef746344" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="java-algorithm" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/Maven/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="D:\Maven\apache-maven-3.5.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="jdkForImporter" value="1.8" />
+        <option name="vmOptionsForImporter" value="-Xmx1024m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1gqhpL3mkhJTQ6sJFLgSnxkzhk7" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MyProject/musicdemo" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RunManager" selected="Application.Orange">
+    <configuration name="Contagion" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mzx.algorithm.test.Contagion" />
+      <module name="java-algorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mzx.algorithm.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mzx.algorithm.test.Game" />
+      <module name="java-algorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mzx.algorithm.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GoldFish" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mzx.algorithm.test.GoldFish" />
+      <module name="java-algorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mzx.algorithm.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="King" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mzx.algorithm.test.King" />
+      <module name="java-algorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mzx.algorithm.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Orange" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mzx.algorithm.test.Orange" />
+      <module name="java-algorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mzx.algorithm.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Orange" />
+        <item itemvalue="Application.King" />
+        <item itemvalue="Application.Game" />
+        <item itemvalue="Application.GoldFish" />
+        <item itemvalue="Application.Contagion" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3e0af8f5-52b8-4666-b58a-e29eef746344" name="Default Changelist" comment="" />
+      <created>1598848211190</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598848211190</updated>
+      <workItem from="1598848212739" duration="8618000" />
+      <workItem from="1599457799365" duration="2471000" />
+      <workItem from="1599551494063" duration="7679000" />
+      <workItem from="1599581461257" duration="2952000" />
+      <workItem from="1599605702299" duration="1327000" />
+      <workItem from="1599607054496" duration="5572000" />
+      <workItem from="1599724372506" duration="551000" />
+      <workItem from="1599725675033" duration="12840000" />
+      <workItem from="1599877613027" duration="1149000" />
+      <workItem from="1599975938287" duration="8123000" />
+      <workItem from="1600058640282" duration="7086000" />
+      <workItem from="1600175011274" duration="611000" />
+      <workItem from="1600175712884" duration="382000" />
+      <workItem from="1600217743622" duration="1180000" />
+      <workItem from="1600265315308" duration="1441000" />
+      <workItem from="1600268812557" duration="115000" />
+      <workItem from="1600269264439" duration="1417000" />
+      <workItem from="1600300581709" duration="5544000" />
+      <workItem from="1600615979598" duration="1854000" />
+      <workItem from="1600697313534" duration="378000" />
+      <workItem from="1600704617431" duration="171000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="76" key="#Notifications" timestamp="1600704621809">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="361" y="76" key="#Notifications/0.0.1536.834@0.0.1536.834" timestamp="1600704621809" />
+    <state x="548" y="276" width="439" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1599976175129">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="548" y="276" width="439" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.834@0.0.1536.834" timestamp="1599976175129" />
+    <state x="611" y="175" key="FileChooserDialogImpl" timestamp="1600269479519">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="611" y="175" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1600269479519" />
+    <state width="1493" height="313" key="GridCell.Tab.0.bottom" timestamp="1600617839905">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="313" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1600617839905" />
+    <state width="1493" height="313" key="GridCell.Tab.0.center" timestamp="1600617839905">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="313" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1600617839905" />
+    <state width="1493" height="313" key="GridCell.Tab.0.left" timestamp="1600617839905">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="313" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1600617839905" />
+    <state width="1493" height="313" key="GridCell.Tab.0.right" timestamp="1600617839905">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="313" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1600617839905" />
+    <state width="1493" height="344" key="GridCell.Tab.1.bottom" timestamp="1600306132786">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="344" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1600306132786" />
+    <state width="1493" height="344" key="GridCell.Tab.1.center" timestamp="1600306132786">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="344" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1600306132786" />
+    <state width="1493" height="344" key="GridCell.Tab.1.left" timestamp="1600306132786">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="344" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1600306132786" />
+    <state width="1493" height="344" key="GridCell.Tab.1.right" timestamp="1600306132786">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="344" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1600306132786" />
+    <state x="94" y="7" width="996" height="762" key="SettingsEditor" timestamp="1600697692979">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="94" y="7" width="996" height="762" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1600697692979" />
+    <state x="178" y="113" key="new project wizard" timestamp="1600269486004">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="178" y="113" key="new project wizard/0.0.1536.834@0.0.1536.834" timestamp="1600269486004" />
+    <state x="473" y="266" width="715" height="306" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1599976481537">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="473" y="266" width="715" height="306" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1536.834@0.0.1536.834" timestamp="1599976481537" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1599609707651">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1599609707651" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mzx/algorithm/test/Orange.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mzx/algorithm/test/Orange.java</url>
+          <line>154</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/java_algorithm$Game.ic" NAME="Game Coverage Results" MODIFIED="1599741160657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.mzx.algorithm.test.*</FILTER>
+    </SUITE>
+  </component>
+</project>

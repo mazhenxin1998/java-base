@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/java-algorithm/java-algorithm.iml" filepath="$PROJECT_DIR$/java-algorithm/java-algorithm.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-base.iml" filepath="$PROJECT_DIR$/java-base.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-basemodel/java-basemodel.iml" filepath="$PROJECT_DIR$/java-basemodel/java-basemodel.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-designmodel/java-designmodel.iml" filepath="$PROJECT_DIR$/java-designmodel/java-designmodel.iml" />

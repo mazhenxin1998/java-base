@@ -12,7 +12,6 @@ public class Lock {
     public static void main(String[] args) throws InterruptedException {
 
         ReentrantLock lock = new ReentrantLock(true);
-
         lock.lock();
         // 先模拟第一个获取锁的线程暂停.
         try {
@@ -26,6 +25,24 @@ public class Lock {
             lock.unlock();
         }
 
+
+    }
+
+    public void noFairLock() {
+
+        // 默认是非公平锁.
+        ReentrantLock lock = new ReentrantLock();
+        lock.lock();
+        try {
+
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        } finally {
+
+            lock.unlock();
+        }
 
     }
 

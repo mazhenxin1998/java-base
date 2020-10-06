@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="threads" />
         <module name="java-basemodel" />
+        <module name="java-algorithm" />
         <module name="java-io" />
         <module name="java-designmodel" />
         <module name="java-sound-code" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="java-algorithm" target="1.8" />
       <module name="java-base" target="1.8" />
       <module name="java-basemodel" target="1.8" />
       <module name="java-designmodel" target="1.8" />

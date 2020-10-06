@@ -13,18 +13,14 @@ public class LockTest {
 
     public static void main(String[] args) {
 
-        ReentrantLock lock = new ReentrantLock(true);
-        lock.lock();
-        try {
+        int x = 0;
+        // 读状态加一，那么就是以下面的方式进行加一?
+        // 那么为什么读一次就直接到65536了?
+        //System.out.println(x + 0x00010000);
+        // 1左移16.
+        // 1<<16 表示的就是1 * 2 的16次幂.
+        System.out.println(1 << 16);
 
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        } finally {
-
-            lock.unlock();
-        }
 
     }
 
